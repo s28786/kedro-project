@@ -1,0 +1,48 @@
+# This is a boilerplate parameters config generated for pipeline 'iris_training'
+# using Kedro 1.1.1.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/1.1.1/configuration/parameters.html
+
+# Model training parameters
+output_dir: "data/08_reporting"
+version: "v1.0.0"
+selection_metric: "f1_macro"
+model_output_path: "data/06_models/model.joblib"
+metadata_output_path: "data/08_reporting/model_meta.json"
+
+# Data splitting parameters
+test_size: 0.2
+random_state: 42
+
+# MLflow configuration
+mlflow:
+  experiment_name: "iris-model-zoo"
+  registered_model_name: "IrisModel"
+  tracking_uri: "file:///mlruns"
+  tags:
+    version: "v1.0.0"
+    project: "asi-s28786"
+
+# Model configurations with hyperparameters
+models:
+  random_forest:
+    name: "RandomForest"
+    n_estimators: 150
+    max_depth: 5
+    random_state: 42
+
+  logistic_regression:
+    name: "LogisticRegression"
+    max_iter: 200
+    random_state: 42
+
+  svm:
+    name: "SVM"
+    C: 1.0
+    probability: true
+    random_state: 42
+
+  knn:
+    name: "KNN"
+    n_neighbors: 5

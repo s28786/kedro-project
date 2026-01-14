@@ -1,0 +1,11 @@
+ipython>=8.10
+jupyterlab>=3.0
+notebook
+kedro~=1.1.1
+kedro-mlflow~=2.0.0
+kedro-viz~=12.2.0
+mlflow>=2.0
+scikit-learn
+pandas
+matplotlib
+joblib

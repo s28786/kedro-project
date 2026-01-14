@@ -1,0 +1,81 @@
+# Here you can define all your datasets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+
+# Raw Iris dataset
+iris_raw:
+  type: pandas.CSVDataset
+  filepath: data/Iris.csv
+
+# Training data splits
+X_train:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/X_train.parquet
+
+y_train:
+  type: pickle.PickleDataset
+  filepath: data/05_model_input/y_train.pkl
+
+X_test:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/X_test.parquet
+
+y_test:
+  type: pickle.PickleDataset
+  filepath: data/05_model_input/y_test.pkl
+
+# Model instances (created in memory, not persisted)
+models.random_forest:
+  type: MemoryDataset
+
+models.logistic_regression:
+  type: MemoryDataset
+
+models.svm:
+  type: MemoryDataset
+
+models.knn:
+  type: MemoryDataset
+
+# Model training results (kept in memory during pipeline execution)
+random_forest_results:
+  type: MemoryDataset
+
+logistic_regression_results:
+  type: MemoryDataset
+
+svm_results:
+  type: MemoryDataset
+
+knn_results:
+  type: MemoryDataset
+
+# Best model selection outputs
+best_model_name:
+  type: MemoryDataset
+
+best_model_results:
+  type: MemoryDataset
+
+mlflow_run_id:
+  type: MemoryDataset
+
+# Saved model artifacts
+model_save_path:
+  type: text.TextDataset
+  filepath: data/08_reporting/model_path.txt
+
+metadata_save_path:
+  type: text.TextDataset
+  filepath: data/08_reporting/metadata_path.txt
+
+# Final best model (persisted)
+best_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/model.joblib
+
+# Model metadata
+model_metadata:
+  type: json.JSONDataset
+  filepath: data/08_reporting/model_meta.json
